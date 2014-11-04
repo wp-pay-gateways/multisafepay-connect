@@ -65,7 +65,6 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 
 		$result = Pronamic_WP_Util::remote_get_body( $this->api_url, 200, array(
 			'method'    => 'POST',
-			'sslverify' => false,
 			'body'      => (string) $message,
 		) );
 
