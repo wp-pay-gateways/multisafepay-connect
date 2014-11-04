@@ -30,7 +30,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Signature {
 	 */
 	public static function generate( $amount, $currency, $account, $site_id, $transaction_id ) {
 		$values = array(
-			Pronamic_WP_Util::amount_to_cents( $amount ),
+			Pronamic_WP_Pay_Util::amount_to_cents( $amount ),
 			$currency,
 			$account,
 			$site_id,

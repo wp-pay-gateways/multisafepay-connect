@@ -2,7 +2,7 @@
 
 class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestStatusParser extends WP_UnitTestCase {
 	function test_init() {
-		$filename = Pronamic_WP_Pay_Plugin::$dirname . '/tests/data/Pronamic/Pay/Gateways/MultiSafepay/Connect/status-response.xml';
+		$filename = __DIR__ . '/Mock/status-response.xml';
 
 		$simplexml = simplexml_load_file( $filename );
 
@@ -15,9 +15,9 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestStatusParser extends WP_Uni
 	 * @depends test_init
 	 */
 	function test_parser( $simplexml ) {
-		$message = Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage::parse( $simplexml );
+		$message = Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage::parse( $simplexml );
 
-		$this->assertInstanceOf( 'Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage', $message );
+		$this->assertInstanceOf( 'Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage', $message );
 
 		return $message;
 	}
@@ -26,7 +26,7 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestStatusParser extends WP_Uni
 	 * @depends test_parser
 	 */
 	function test_values( $message ) {
-		$expected = new Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage();
+		$expected = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage();
 		$expected->result = 'ok';
 
 		// E-wallet
