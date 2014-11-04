@@ -8,7 +8,7 @@
  * @author Remco Tolsma
  * @version 1.0
  */
-class Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_TransactionParser {
+class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_TransactionParser {
 	/**
 	 * Parse the specified XML element into an iDEAL transaction object
 	 *
@@ -16,7 +16,7 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_TransactionParser {
 	 * @param Pronamic_Gateways_IDealAdvanced_Transaction $transaction
 	 */
 	public static function parse( SimpleXMLElement $xml ) {
-		$transaction = new Pronamic_Pay_Gateways_MultiSafepay_Connect_Transaction();
+		$transaction = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Transaction();
 
 		$transaction->id = Pronamic_XML_Util::filter( $xml->id );
 		$transaction->payment_url = Pronamic_XML_Util::filter( $xml->payment_url );

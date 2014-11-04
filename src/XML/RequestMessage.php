@@ -8,7 +8,7 @@
  * @author Remco Tolsma
  * @version 1.0
  */
-abstract class Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_RequestMessage extends Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_Message  {
+abstract class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RequestMessage extends Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_Message  {
 	/**
 	 * Constructs and initialize an request message
 	 *

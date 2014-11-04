@@ -2,7 +2,7 @@
 	"name": "wp-pay-gateways/multisafepay-connect",
 	"description": "MultiSafepay Connect driver for the WordPress payment processing library.",
 	"keywords": ["wordpress", "wp", "pay", "multisafepay", "connect", "ideal", "gateway", "pronamic"],
-	"homepage": "http://www.wp-pay.org/gateways/multisafepay/",
+	"homepage": "http://www.wp-pay.org/gateways/multisafepay-connect/",
 	"license": "GPL",
 	"authors": [
 		{
@@ -20,15 +20,16 @@
 	],
 	"support": {
 		"email": "support@wp-pay.org",
-		"issues": "https://github.com/wp-pay-gateways/multisafepay/issues",
-		"source": "https://github.com/wp-pay-gateways/multisafepay"
+		"issues": "https://github.com/wp-pay-gateways/multisafepay-connect/issues",
+		"source": "https://github.com/wp-pay-gateways/multisafepay-connect"
 	},
 	"autoload": {
 		"classmap": ["src/"]
 	},
 	"require": {
 		"php": ">=5.2.4",
-		"wp-pay/core": "dev-develop"
+		"wp-pay/core": "dev-develop",
+		"wp-pay-gateways/multisafepay": "dev-develop"
 	},
 	"require-dev": {
 		"satooshi/php-coveralls": "dev-master"

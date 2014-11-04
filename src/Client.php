@@ -31,7 +31,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 	 * Constructs and initializes an MultiSafepay Connect client
 	 */
 	public function __construct() {
-		$this->api_url = Pronamic_Pay_Gateways_MultiSafepay_MultiSafepay::API_PRODUCTION_URL;
+		$this->api_url = Pronamic_WP_Pay_Gateways_MultiSafepay_MultiSafepay::API_PRODUCTION_URL;
 	}
 
 	/////////////////////////////////////////////////
@@ -49,10 +49,10 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 
 	private function parse_xml( $xml ) {
 		switch ( $xml->getName() ) {
-			case Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage::NAME:
-				return Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage::parse( $xml );;
-			case Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_StatusRequestMessage::NAME:
-				return Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage::parse( $xml );;
+			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage::NAME:
+				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage::parse( $xml );;
+			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusRequestMessage::NAME:
+				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage::parse( $xml );;
 		}
 
 		return false;

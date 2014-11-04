@@ -8,7 +8,7 @@
  * @author Remco Tolsma
  * @version 1.0
  */
-class Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage {
+class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage {
 	/**
 	 * Parse the specified XML element into an iDEAL transaction object
 	 *
@@ -16,10 +16,10 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponse
 	 * @param Pronamic_Gateways_IDealAdvanced_Transaction $transaction
 	 */
 	public static function parse( SimpleXMLElement $xml ) {
-		$message = new Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage();
+		$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage();
 
 		$message->result = Pronamic_XML_Util::filter( $xml['result'] );
-		$message->transaction = Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_TransactionParser::parse( $xml->transaction );
+		$message->transaction = Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_TransactionParser::parse( $xml->transaction );
 
 		return $message;
 	}

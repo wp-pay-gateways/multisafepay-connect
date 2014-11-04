@@ -8,7 +8,7 @@
  * @author Remco Tolsma
  * @version 1.0
  */
-class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusRequestMessage extends Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_RequestMessage {
+class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusRequestMessage extends Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RequestMessage {
 	/**
 	 * The document element name
 	 *

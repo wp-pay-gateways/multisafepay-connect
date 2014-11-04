@@ -8,7 +8,7 @@
  * @author Remco Tolsma
  * @since 1.4.0
  */
-class Pronamic_Pay_Gateways_MultiSafepay_Connect_Signature {
+class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Signature {
 	public $account;
 
 	public $site_id;

@@ -8,7 +8,7 @@
  * @author Remco Tolsma
  * @version 1.0
  */
-class Pronamic_Pay_Gateways_MultiSafepay_Connect_XML_Message {
+class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_Message {
 	/**
 	 * The XML version of the iDEAL messages
 	 *
