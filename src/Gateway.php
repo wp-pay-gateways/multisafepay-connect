@@ -51,8 +51,8 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 
 		$customer = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Customer();
 		$customer->locale = $data->get_language_and_country();
-		$customer->ip_address = filter_input( INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP );
-		$customer->forwarded_ip = filter_input( INPUT_SERVER, 'HTTP_X_FORWARDED_FOR', FILTER_VALIDATE_IP );
+		$customer->ip_address = filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP );
+		$customer->forwarded_ip = filter_var( $_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP );
 		$customer->first_name = $data->getCustomerName();
 		$customer->last_name = '';
 		$customer->address_1 = 'Test';
