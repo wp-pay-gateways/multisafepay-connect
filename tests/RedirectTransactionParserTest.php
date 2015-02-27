@@ -2,7 +2,7 @@
 
 class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestRedirectTransactionParser extends WP_UnitTestCase {
 	function test_init() {
-		$filename =  __DIR__ . '/Mock/redirect-transaction-response.xml';
+		$filename = __DIR__ . '/Mock/redirect-transaction-response.xml';
 
 		$simplexml = simplexml_load_file( $filename );
 
