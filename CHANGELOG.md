@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+*	Updated WordPress pay core library to version 1.1.1.
+*	If payment description is empty the payment ID is used.
+
 ## 1.1.0
 *	Updated WordPress pay core library to version 1.1.0.
 *	Updated WordPress pay MultiSafepay library to version 1.1.0.
