@@ -41,6 +41,12 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment, $payment_method = null ) {
 		$url = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
 
+		$transaction_description = $data->get_description();
+
+		if ( empty( $transaction_description ) ) {
+			$transaction_description = $payment->get_id();
+		}
+
 		$merchant = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Merchant();
 		$merchant->account = $this->config->account_id;
 		$merchant->site_id = $this->config->site_id;
@@ -52,8 +58,8 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 
 		$customer = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Customer();
 		$customer->locale = $data->get_language_and_country();
-		$customer->ip_address = Pronamic_WP_Pay_Server::get( 'REMOTE_ADDR' );
-		$customer->forwarded_ip = Pronamic_WP_Pay_Server::get( 'HTTP_X_FORWARDED_FOR' );
+		$customer->ip_address = Pronamic_WP_Pay_Server::get( 'REMOTE_ADDR', FILTER_VALIDATE_IP );
+		$customer->forwarded_ip = Pronamic_WP_Pay_Server::get( 'HTTP_X_FORWARDED_FOR', FILTER_VALIDATE_IP );
 		$customer->first_name = $data->getCustomerName();
 		$customer->last_name = '';
 		$customer->address_1 = 'Test';
@@ -69,7 +75,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$transaction->id = uniqid();
 		$transaction->currency = $data->get_currency();
 		$transaction->amount = $data->get_amount();
-		$transaction->description = $data->get_description();
+		$transaction->description = $transaction_description;
 		$transaction->var1 = '';
 		$transaction->var2 = '';
 		$transaction->var3 = '';
