@@ -49,10 +49,10 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 
 	private function parse_xml( $xml ) {
 		switch ( $xml->getName() ) {
-			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage::NAME:
-				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage::parse( $xml );;
-			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusRequestMessage::NAME:
-				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage::parse( $xml );;
+			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage::NAME :
+				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage::parse( $xml );
+			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusRequestMessage::NAME :
+				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage::parse( $xml );
 		}
 
 		return false;
