@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Title: Transaction XML parser
+ * Title: MultiSafepay Connect XML transaction parser
  * Description:
  * Copyright: Copyright (c) 2005 - 2015
  * Company: Pronamic

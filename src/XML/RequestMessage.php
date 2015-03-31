@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Title: iDEAL request XML message
+ * Title: MultiSafepay Connect XML request message
  * Description:
  * Copyright: Copyright (c) 2005 - 2015
  * Company: Pronamic

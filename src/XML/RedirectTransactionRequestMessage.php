@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Title: MultiSafepay Connect redirect transaction XML message
+ * Title: MultiSafepay Connect XML redirect transaction request message
  * Description:
  * Copyright: Copyright (c) 2005 - 2015
  * Company: Pronamic

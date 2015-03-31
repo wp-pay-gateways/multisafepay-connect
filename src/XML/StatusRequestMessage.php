@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Title: Status message
+ * Title: MultiSafepay Connect XML status request message
  * Description:
  * Copyright: Copyright (c) 2005 - 2015
  * Company: Pronamic
