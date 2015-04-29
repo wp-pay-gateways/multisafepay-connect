@@ -33,7 +33,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$this->set_slug( self::SLUG );
 
 		$this->client = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client();
-		$this->client->api_url  = $config->api_url;
+		$this->client->api_url = $config->api_url;
 	}
 
 	/////////////////////////////////////////////////

@@ -86,6 +86,15 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 	/////////////////////////////////////////////////
 
 	/**
+	 * Get iDEAL issuers
+	 */
+	public function get_ideal_issuers( $merchant ) {
+		$request = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_IDealIssuersRequestMessage( $merchant );
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
 	 * Start transaction
 	 *
 	 * @param array $data
