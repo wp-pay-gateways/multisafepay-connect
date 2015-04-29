@@ -9,7 +9,7 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_GatewayTest extends WP_UnitTest
 		$config->site_id    = getenv( 'MULTISAFEPAY_SITE_ID' );
 		$config->site_code  = getenv( 'MULTISAFEPAY_SECURE_CODE' );
 
-		if ( 'test' == $config->mode ) {
+		if ( 'test' === $config->mode ) {
 			$config->api_url = Pronamic_WP_Pay_Gateways_MultiSafepay_MultiSafepay::API_TEST_URL;
 		} else {
 			$config->api_url = Pronamic_WP_Pay_Gateways_MultiSafepay_MultiSafepay::API_PRODUCTION_URL;
