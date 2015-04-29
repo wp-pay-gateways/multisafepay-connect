@@ -44,8 +44,8 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_IDealIssuersRequestMessa
 		// Merchant
 		$merchant = $this->merchant;
 
-		$element = Pronamic_XML_Util::add_element( $document, $document->documentElement, 'merchant' );
-		Pronamic_XML_Util::add_elements( $document, $element, array(
+		$element = Pronamic_WP_Pay_XML_Util::add_element( $document, $document->documentElement, 'merchant' );
+		Pronamic_WP_Pay_XML_Util::add_elements( $document, $element, array(
 			'account'          => $merchant->account,
 			'site_id'          => $merchant->site_id,
 			'site_secure_code' => $merchant->site_secure_code,

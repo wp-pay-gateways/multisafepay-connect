@@ -38,6 +38,37 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 
 	/////////////////////////////////////////////////
 
+	/**
+	 * Get issuers
+	 *
+	 * @see Pronamic_WP_Pay_Gateway::get_issuers()
+	 */
+	public function get_issuers() {
+		$merchant = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Merchant();
+		$merchant->account = $this->config->account_id;
+		$merchant->site_id = $this->config->site_id;
+		$merchant->site_secure_code = $this->config->site_code;
+
+		$result = $this->client->get_ideal_issuers( $merchant );
+
+		return $result;
+	}
+
+	/////////////////////////////////////////////////
+
+	public function get_issuer_field() {
+		return array(
+			'id'       => 'pronamic_ideal_issuer_id',
+			'name'     => 'pronamic_ideal_issuer_id',
+			'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
+			'required' => true,
+			'type'     => 'select',
+			'choices'  => $this->get_transient_issuers()
+		);
+	}
+
+	/////////////////////////////////////////////////
+
 	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment, $payment_method = null ) {
 		$url = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
 

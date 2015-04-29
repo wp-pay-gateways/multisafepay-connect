@@ -9,37 +9,20 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_GatewayTest extends WP_UnitTest
 		$config->site_id    = getenv( 'MULTISAFEPAY_SITE_ID' );
 		$config->site_code  = getenv( 'MULTISAFEPAY_SECURE_CODE' );
 
-		if ( $config->mode == Pronamic_IDeal_IDeal::MODE_TEST ) {
+		if ( 'test' == $config->mode ) {
 			$config->api_url = Pronamic_WP_Pay_Gateways_MultiSafepay_MultiSafepay::API_TEST_URL;
 		} else {
 			$config->api_url = Pronamic_WP_Pay_Gateways_MultiSafepay_MultiSafepay::API_PRODUCTION_URL;
 		}
-	}
 
-	/**
-	 * @depends test_init
-	 */
-	function test_parser( $simplexml ) {
-		$message = Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionResponseMessage::parse( $simplexml );
+		$gateway = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway( $config );
 
-		$this->assertInstanceOf( 'Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionResponseMessage', $message );
+		$issuers = $gateway->get_issuers();
 
-		return $message;
-	}
+		$expected = array(
+			'3151' => 'Test bank',
+		);
 
-	/**
-	 * @depends test_parser
-	 */
-	function test_values( $message ) {
-		$expected = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionResponseMessage();
-		$expected->result = 'ok';
-
-		$transaction = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Transaction();
-		$transaction->id = 'ABCD1234';
-		$transaction->payment_url = 'http://www.multisafepay.com/pay/...&lang=en';
-
-		$expected->transaction = $transaction;
-
-		$this->assertEquals( $expected, $message );
+		$this->assertEquals( $expected, $issuers );
 	}
 }

@@ -28,7 +28,7 @@
 	},
 	"require": {
 		"php": ">=5.2.4",
-		"wp-pay/core": ">=1.2.0",
+		"wp-pay/core": ">=1.2.1",
 		"wp-pay-gateways/multisafepay": ">=1.1.1"
 	},
 	"require-dev": {

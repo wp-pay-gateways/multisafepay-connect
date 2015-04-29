@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fd3e777da81c2c4adf12f150fbf49fc8",
+    "hash": "ae7ff658e00a5dce199fb8e59a5e4cf2",
     "packages": [
         {
             "name": "wp-pay-gateways/multisafepay",
@@ -66,16 +66,16 @@
         },
         {
             "name": "wp-pay/core",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-pay/core.git",
-                "reference": "dcbe422c099b4d3471fa863fe81bbc329ca435b9"
+                "reference": "d40c40f742e5bddea6e10751b515c865fb56915f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-pay/core/zipball/dcbe422c099b4d3471fa863fe81bbc329ca435b9",
-                "reference": "dcbe422c099b4d3471fa863fe81bbc329ca435b9",
+                "url": "https://api.github.com/repos/wp-pay/core/zipball/d40c40f742e5bddea6e10751b515c865fb56915f",
+                "reference": "d40c40f742e5bddea6e10751b515c865fb56915f",
                 "shasum": ""
             },
             "require": {
@@ -115,7 +115,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2015-03-26 13:39:06"
+            "time": "2015-04-29 14:48:49"
         }
     ],
     "packages-dev": [

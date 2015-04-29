@@ -18,8 +18,14 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_IDealIssuersResponseMess
 	 */
 	public static function parse( SimpleXMLElement $xml ) {
 		$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_IDealIssuersResponseMessage();
+		$message->issuers = array();
 
-		// @todo
+		foreach ( $xml->issuers->issuer as $issuer ) {
+			$code        = Pronamic_WP_Pay_XML_Security::filter( $issuer->code );
+			$description = Pronamic_WP_Pay_XML_Security::filter( $issuer->description );
+
+			$message->issuers[ $code ] = $description;
+		}
 
 		return $message;
 	}
