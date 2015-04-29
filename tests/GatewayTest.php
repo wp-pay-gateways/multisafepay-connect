@@ -1,7 +1,29 @@
 <?php
 
 class Pronamic_Pay_Gateways_MultiSafepay_Connect_GatewayTest extends WP_UnitTestCase {
+	/**
+	 * Pre HTTP request
+	 *
+	 * @see https://github.com/WordPress/WordPress/blob/3.9.1/wp-includes/class-http.php#L150-L164
+	 * @return string
+	 */
+	public function pre_http_request( $preempt, $request, $url ) {
+		$response = file_get_contents( __DIR__ . '/Mock/ideal-issuers-response.http' );
+
+		$processedResponse = WP_Http::processResponse( $response );
+
+		$processedHeaders = WP_Http::processHeaders( $processedResponse['headers'], $url );
+		$processedHeaders['body'] = $processedResponse['body'];
+
+		return $processedHeaders;
+	}
+
 	function test_init() {
+		// Mock HTTP request
+		//add_action( 'http_api_debug', array( $this, 'http_api_debug' ), 10, 5 );
+		add_filter( 'pre_http_request', array( $this, 'pre_http_request' ), 10, 3 );
+
+		// Other
 		$config = new Pronamic_WP_Pay_Gateways_MultiSafepay_Config();
 
 		$config->mode       = getenv( 'MULTISAFEPAY_MODE' );
