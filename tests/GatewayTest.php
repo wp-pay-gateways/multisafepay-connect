@@ -42,7 +42,11 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_GatewayTest extends WP_UnitTest
 		$issuers = $gateway->get_issuers();
 
 		$expected = array(
-			'3151' => 'Test bank',
+			array(
+				'options' => array(
+					'3151' => 'Test bank',
+				),
+			),
 		);
 
 		$this->assertEquals( $expected, $issuers );
