@@ -44,6 +44,9 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 	 * @see Pronamic_WP_Pay_Gateway::get_issuers()
 	 */
 	public function get_issuers() {
+		$groups = array();
+
+		// Merchant
 		$merchant = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Merchant();
 		$merchant->account = $this->config->account_id;
 		$merchant->site_id = $this->config->site_id;
@@ -51,7 +54,13 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 
 		$result = $this->client->get_ideal_issuers( $merchant );
 
-		return $result;
+		if ( $result ) {
+			$groups[] = array(
+				'options' => $result,
+			);
+		}
+
+		return $groups;
 	}
 
 	/////////////////////////////////////////////////
