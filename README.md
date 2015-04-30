@@ -3,7 +3,7 @@
 **MultiSafepay Connect driver for the WordPress payment processing library.**
 
 [![Build Status](https://travis-ci.org/wp-pay-gateways/multisafepay-connect.svg?branch=develop)](https://travis-ci.org/wp-pay-gateways/multisafepay-connect)
-[![Coverage Status](https://coveralls.io/repos/wp-pay-gateways/multisafepay-connect/badge.png?branch=develop)](https://coveralls.io/r/wp-pay-gateways/multisafepay-connect?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/wp-pay-gateways/multisafepay-connect/badge.svg?branch=develop)](https://coveralls.io/r/wp-pay-gateways/multisafepay-connect?branch=develop)
 [![Latest Stable Version](https://poser.pugx.org/wp-pay-gateways/multisafepay-connect/v/stable)](https://packagist.org/packages/wp-pay-gateways/multisafepay-connect)
 [![Total Downloads](https://poser.pugx.org/wp-pay-gateways/multisafepay-connect/downloads)](https://packagist.org/packages/wp-pay-gateways/multisafepay-connect)
 [![Latest Unstable Version](https://poser.pugx.org/wp-pay-gateways/multisafepay-connect/v/unstable)](https://packagist.org/packages/wp-pay-gateways/multisafepay-connect)
