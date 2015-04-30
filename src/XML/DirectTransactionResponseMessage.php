@@ -22,7 +22,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRespons
 
 		// Result
 		$message->result = Pronamic_WP_Pay_XML_Security::filter( $xml['result'] );
-		
+
 		// Transaction
 		$message->transaction = Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_TransactionParser::parse( $xml->transaction );
 

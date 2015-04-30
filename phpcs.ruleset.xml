@@ -5,4 +5,8 @@
 
 		<exclude name="WordPress.VIP.RestrictedVariables.cache_constraints" />
 	</rule>
+
+	 <rule ref="WordPress.VIP.RestrictedFunctions.file_get_contents">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
 </ruleset>

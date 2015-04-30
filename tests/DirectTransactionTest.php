@@ -19,9 +19,7 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_DirectTransactionTest extends W
 	}
 
 	public function http_api_debug( $response, $context, $class, $args, $url ) {
-		var_dump( $response );
 
-		echo $response['body'];
 	}
 
 	public function test_init() {
@@ -93,7 +91,7 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_DirectTransactionTest extends W
 		$gateway_info->issuer_id = '3151';
 
 		$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRequestMessage( $merchant, $customer, $transaction, $gateway_info );
-		
+
 		$signature = Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Signature::generate( $transaction->amount, $transaction->currency, $merchant->account, $merchant->site_id, $transaction->id );
 
 		$message->signature = $signature;

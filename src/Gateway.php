@@ -115,7 +115,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$transaction->gateway = '';
 		$transaction->days_active = '';
 
-		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL == $payment_method ) {
+		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL === $payment_method ) {
 			$gateway_info = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_GatewayInfo();
 			$gateway_info->issuer_id = $data->get_issuer_id();
 

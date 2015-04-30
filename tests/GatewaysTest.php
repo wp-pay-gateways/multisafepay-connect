@@ -19,7 +19,7 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_GatewaysTest extends WP_UnitTes
 	}
 
 	public function http_api_debug( $response, $context, $class, $args, $url ) {
-		var_dump( $response );
+
 	}
 
 	function test_init() {
