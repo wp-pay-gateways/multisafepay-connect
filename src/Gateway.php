@@ -115,17 +115,35 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$transaction->gateway = '';
 		$transaction->days_active = '';
 
-		$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage( $merchant, $customer, $transaction );
+		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL == $payment_method ) {
+			$gateway_info = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_GatewayInfo();
+			$gateway_info->issuer_id = $data->get_issuer_id();
+
+			$transaction->gateway = Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::IDEAL;
+
+			$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRequestMessage( $merchant, $customer, $transaction, $gateway_info );
+		} else {
+			$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage( $merchant, $customer, $transaction );
+		}
 
 		$signature = Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Signature::generate( $transaction->amount, $transaction->currency, $merchant->account, $merchant->site_id, $transaction->id );
 
 		$message->signature = $signature;
 
-		$result = $this->client->start_transaction( $message );
+		$response = $this->client->start_transaction( $message );
 
-		if ( $result ) {
-			$payment->set_transaction_id( $result->id );
-			$payment->set_action_url( $result->payment_url );
+		if ( $response ) {
+			$transaction = $response->transaction;
+
+			$payment->set_transaction_id( $transaction->id );
+
+			if ( $transaction->payment_url ) {
+				$payment->set_action_url( $result->payment_url );
+			}
+
+			if ( $response->gateway_info && $response->gateway_info->redirect_url ) {
+				$payment->set_action_url( $response->gateway_info->redirect_url );
+			}
 		} else {
 			$this->error = $this->client->get_error();
 		}

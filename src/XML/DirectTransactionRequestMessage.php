@@ -22,7 +22,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRequest
 	/**
 	 * Constructs and initialize an directory response message
 	 */
-	public function __construct( $merchant, $customer, $transaction, $gateway_info ) {
+	public function __construct( $merchant, $customer, $transaction, $gateway_info = null ) {
 		parent::__construct( self::NAME );
 
 		$this->merchant     = $merchant;
@@ -97,12 +97,14 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRequest
 		) );
 
 		// Gateway info
-		$gateway_info = $this->gateway_info;
+		if ( $this->gateway_info ) {
+			$gateway_info = $this->gateway_info;
 
-		$element = Pronamic_WP_Pay_XML_Util::add_element( $document, $document->documentElement, 'gatewayinfo' );
-		Pronamic_WP_Pay_XML_Util::add_elements( $document, $element, array(
-			'issuerid' => $gateway_info->issuer_id,
-		) );
+			$element = Pronamic_WP_Pay_XML_Util::add_element( $document, $document->documentElement, 'gatewayinfo' );
+			Pronamic_WP_Pay_XML_Util::add_elements( $document, $element, array(
+				'issuerid' => $gateway_info->issuer_id,
+			) );
+		}
 
 		// Signature
 		$element = Pronamic_WP_Pay_XML_Util::add_element( $document, $document->documentElement, 'signature', $this->signature );

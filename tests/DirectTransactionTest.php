@@ -20,11 +20,13 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_DirectTransactionTest extends W
 
 	public function http_api_debug( $response, $context, $class, $args, $url ) {
 		var_dump( $response );
+
+		echo $response['body'];
 	}
 
 	public function test_init() {
 		// Actions
-		// add_action( 'http_api_debug', array( $this, 'http_api_debug' ), 10, 5 );
+		//add_action( 'http_api_debug', array( $this, 'http_api_debug' ), 10, 5 );
 		add_filter( 'pre_http_request', array( $this, 'pre_http_request' ), 10, 3 );
 
 		// Config
@@ -82,7 +84,11 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_DirectTransactionTest extends W
 		$transaction->manual = 'false';
 		$transaction->gateway = '';
 		$transaction->days_active = '';
+		$transaction->gateway = Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::IDEAL;
+		//$transaction->gateway = Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::MASTERCARD;
+		//$transaction->gateway = Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::BANK_TRANSFER;
 
+		//$gateway_info = null;
 		$gateway_info = new stdClass();
 		$gateway_info->issuer_id = '3151';
 
@@ -92,8 +98,22 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_DirectTransactionTest extends W
 
 		$message->signature = $signature;
 
-		$result = $client->start_transaction( $message );
+		// Response
+		$response = $client->start_transaction( $message );
 
-		var_dump( $result );
+		// Expected
+		$expected = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionResponseMessage();
+		$expected->result = 'ok';
+
+		$expected->transaction = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Transaction();
+		$expected->transaction->id = '554202bb33498';
+
+		$expected->gateway_info = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_GatewayInfo();
+		$expected->gateway_info->issuer_id = '3151';
+		$expected->gateway_info->redirect_url = 'http://testpay.multisafepay.com/simulator/ideal?trxid=10447735643871196&ideal=prob&issuerid=3151&merchantReturnURL=https%3A%2F%2Ftestpay%2Emultisafepay%2Ecom%2Fdirect%2Fcomplete%2F%3Fid%3D9943038943576689';
+		$expected->gateway_info->ext_var      = 'https://testpay.multisafepay.com/direct/complete/';
+
+		// Assert
+		$this->assertEquals( $expected, $response );
 	}
 }
