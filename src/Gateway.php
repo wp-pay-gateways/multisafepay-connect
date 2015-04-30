@@ -101,14 +101,6 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$customer->ip_address = Pronamic_WP_Pay_Server::get( 'REMOTE_ADDR', FILTER_VALIDATE_IP );
 		$customer->forwarded_ip = Pronamic_WP_Pay_Server::get( 'HTTP_X_FORWARDED_FOR', FILTER_VALIDATE_IP );
 		$customer->first_name = $data->getCustomerName();
-		$customer->last_name = '';
-		$customer->address_1 = 'Test';
-		$customer->address_2 = '';
-		$customer->house_number = '1';
-		$customer->zip_code = '1234 AB';
-		$customer->city = 'Test';
-		$customer->country = 'Test';
-		$customer->phone = '';
 		$customer->email = $data->get_email();
 
 		$transaction = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Transaction();
@@ -116,13 +108,6 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$transaction->currency = $data->get_currency();
 		$transaction->amount = $data->get_amount();
 		$transaction->description = $transaction_description;
-		$transaction->var1 = '';
-		$transaction->var2 = '';
-		$transaction->var3 = '';
-		$transaction->items = '';
-		$transaction->manual = 'false';
-		$transaction->gateway = '';
-		$transaction->days_active = '';
 
 		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL === $payment_method ) {
 			$gateway_info = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_GatewayInfo();
