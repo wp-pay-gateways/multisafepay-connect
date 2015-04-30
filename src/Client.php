@@ -93,6 +93,8 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 
 	/**
 	 * Get iDEAL issuers
+	 *
+	 * @since 1.2.0
 	 */
 	public function get_ideal_issuers( $merchant ) {
 		$request = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_IDealIssuersRequestMessage( $merchant );
@@ -106,6 +108,8 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 
 	/**
 	 * Get gateways
+	 *
+	 * @since 1.2.0
 	 */
 	public function get_gateways( $merchant, $customer ) {
 		$request = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_GatewaysRequestMessage( $merchant, $customer );

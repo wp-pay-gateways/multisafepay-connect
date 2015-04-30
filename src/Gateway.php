@@ -42,6 +42,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 	 * Get issuers
 	 *
 	 * @see Pronamic_WP_Pay_Gateway::get_issuers()
+	 * @since 1.2.0
 	 */
 	public function get_issuers() {
 		$groups = array();
@@ -65,6 +66,11 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 
 	/////////////////////////////////////////////////
 
+	/**
+	 * Get issuer field
+	 *
+	 * @since 1.2.0
+	 */
 	public function get_issuer_field() {
 		return array(
 			'id'       => 'pronamic_ideal_issuer_id',
