@@ -14,3 +14,5 @@
 
 *	[MultiSafepay](https://multisafepay.com/)
 *	[MultiSafepay API](https://multisafepay.com/nl/Artikelen-Support-Zakelijk/asp-en-php-download-zakelijk.html)
+	*	[MutliSafepay - Implementation manual Connect (UK)](http://www.wp-pay.org/wp-content/uploads/2015/04/multisafepay-connect-en.pdf)
+	*	[MultiSafepay Implementatie handleiding Connect (NL)](http://www.wp-pay.org/wp-content/uploads/2015/04/multisafepay-connect-nl.pdf)
