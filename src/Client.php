@@ -49,10 +49,16 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 
 	private function parse_xml( $xml ) {
 		switch ( $xml->getName() ) {
-			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage::NAME:
-				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage::parse( $xml );;
-			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusRequestMessage::NAME:
-				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage::parse( $xml );;
+			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_IDealIssuersRequestMessage::NAME :
+				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_IDealIssuersResponseMessage::parse( $xml );
+			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_GatewaysRequestMessage::NAME :
+				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_GatewaysResponseMessage::parse( $xml );
+			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRequestMessage::NAME :
+				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionResponseMessage::parse( $xml );
+			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage::NAME :
+				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionResponseMessage::parse( $xml );
+			case Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusRequestMessage::NAME :
+				return Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_StatusResponseMessage::parse( $xml );
 		}
 
 		return false;
@@ -60,10 +66,10 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 
 	/////////////////////////////////////////////////
 
-	private function reuqest( $message ) {
+	private function request( $message ) {
 		$return = false;
 
-		$result = Pronamic_WP_Util::remote_get_body( $this->api_url, 200, array(
+		$result = Pronamic_WP_Pay_Util::remote_get_body( $this->api_url, 200, array(
 			'method' => 'POST',
 			'body'   => (string) $message,
 		) );
@@ -71,7 +77,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 		if ( is_wp_error( $result ) ) {
 			$this->error = $result;
 		} else {
-			$xml = Pronamic_WP_Util::simplexml_load_string( $result );
+			$xml = Pronamic_WP_Pay_Util::simplexml_load_string( $result );
 
 			if ( is_wp_error( $xml ) ) {
 				$this->error = $xml;
@@ -86,6 +92,36 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 	/////////////////////////////////////////////////
 
 	/**
+	 * Get iDEAL issuers
+	 *
+	 * @since 1.2.0
+	 */
+	public function get_ideal_issuers( $merchant ) {
+		$request = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_IDealIssuersRequestMessage( $merchant );
+
+		$response = $this->request( $request );
+
+		return $response->issuers;
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
+	 * Get gateways
+	 *
+	 * @since 1.2.0
+	 */
+	public function get_gateways( $merchant, $customer ) {
+		$request = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_GatewaysRequestMessage( $merchant, $customer );
+
+		$response = $this->request( $request );
+
+		return $response->gateways;
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
 	 * Start transaction
 	 *
 	 * @param array $data
@@ -93,12 +129,10 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 	public function start_transaction( $message ) {
 		$return = false;
 
-		$response = $this->reuqest( $message );
+		$response = $this->request( $message );
 
 		if ( $response ) {
-			$transaction = $response->transaction;
-
-			$return = $transaction;
+			$return = $response;
 		}
 
 		return $return;
@@ -114,7 +148,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 	public function get_status( $message ) {
 		$return = false;
 
-		$response = $this->reuqest( $message );
+		$response = $this->request( $message );
 
 		if ( $response ) {
 			$return = $response;

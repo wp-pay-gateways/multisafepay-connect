@@ -33,7 +33,53 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$this->set_slug( self::SLUG );
 
 		$this->client = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client();
-		$this->client->api_url  = $config->api_url;
+		$this->client->api_url = $config->api_url;
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
+	 * Get issuers
+	 *
+	 * @see Pronamic_WP_Pay_Gateway::get_issuers()
+	 * @since 1.2.0
+	 */
+	public function get_issuers() {
+		$groups = array();
+
+		// Merchant
+		$merchant = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Merchant();
+		$merchant->account = $this->config->account_id;
+		$merchant->site_id = $this->config->site_id;
+		$merchant->site_secure_code = $this->config->site_code;
+
+		$result = $this->client->get_ideal_issuers( $merchant );
+
+		if ( $result ) {
+			$groups[] = array(
+				'options' => $result,
+			);
+		}
+
+		return $groups;
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
+	 * Get issuer field
+	 *
+	 * @since 1.2.0
+	 */
+	public function get_issuer_field() {
+		return array(
+			'id'       => 'pronamic_ideal_issuer_id',
+			'name'     => 'pronamic_ideal_issuer_id',
+			'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
+			'required' => true,
+			'type'     => 'select',
+			'choices'  => $this->get_transient_issuers()
+		);
 	}
 
 	/////////////////////////////////////////////////
@@ -61,14 +107,6 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$customer->ip_address = Pronamic_WP_Pay_Server::get( 'REMOTE_ADDR', FILTER_VALIDATE_IP );
 		$customer->forwarded_ip = Pronamic_WP_Pay_Server::get( 'HTTP_X_FORWARDED_FOR', FILTER_VALIDATE_IP );
 		$customer->first_name = $data->getCustomerName();
-		$customer->last_name = '';
-		$customer->address_1 = 'Test';
-		$customer->address_2 = '';
-		$customer->house_number = '1';
-		$customer->zip_code = '1234 AB';
-		$customer->city = 'Test';
-		$customer->country = 'Test';
-		$customer->phone = '';
 		$customer->email = $data->get_email();
 
 		$transaction = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Transaction();
@@ -76,29 +114,36 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$transaction->currency = $data->get_currency();
 		$transaction->amount = $data->get_amount();
 		$transaction->description = $transaction_description;
-		$transaction->var1 = '';
-		$transaction->var2 = '';
-		$transaction->var3 = '';
-		$transaction->items = '';
-		$transaction->manual = 'false';
-		$transaction->gateway = '';
-		$transaction->days_active = '';
 
-		$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage( $merchant, $customer, $transaction );
+		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL === $payment_method ) {
+			$gateway_info = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_GatewayInfo();
+			$gateway_info->issuer_id = $data->get_issuer_id();
 
-		global $pronamic_pay_version;
+			$transaction->gateway = Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::IDEAL;
 
-		$message->set_user_agent( 'Pronamic Pay' . ' ' . $pronamic_pay_version );
+			$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRequestMessage( $merchant, $customer, $transaction, $gateway_info );
+		} else {
+			$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage( $merchant, $customer, $transaction );
+		}
 
 		$signature = Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Signature::generate( $transaction->amount, $transaction->currency, $merchant->account, $merchant->site_id, $transaction->id );
 
 		$message->signature = $signature;
 
-		$result = $this->client->start_transaction( $message );
+		$response = $this->client->start_transaction( $message );
 
-		if ( $result ) {
-			$payment->set_transaction_id( $result->id );
-			$payment->set_action_url( $result->payment_url );
+		if ( $response ) {
+			$transaction = $response->transaction;
+
+			$payment->set_transaction_id( $transaction->id );
+
+			if ( $transaction->payment_url ) {
+				$payment->set_action_url( $result->payment_url );
+			}
+
+			if ( $response->gateway_info && $response->gateway_info->redirect_url ) {
+				$payment->set_action_url( $response->gateway_info->redirect_url );
+			}
 		} else {
 			$this->error = $this->client->get_error();
 		}

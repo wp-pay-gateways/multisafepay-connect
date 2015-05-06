@@ -1,21 +1,22 @@
 language: php
-
 php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - hhvm
-
+- 5.3
+- 5.4
+- 5.5
 env:
+  matrix:
   - WP_VERSION=latest WP_MULTISITE=0
   - WP_VERSION=latest WP_MULTISITE=1
   - WP_VERSION=3.5.1 WP_MULTISITE=0
   - WP_VERSION=3.5.1 WP_MULTISITE=1
-
+  global:
+  - secure: GZuBoHlpcrgIBwu4Y254Enq2ahpC36jnyXhB2YJLI1+3xqmf4qq7IjxuOLmZkIHA/VCls7L7+avarrw/lT/z7ZeaCVJ0x/oK34WcHm84dP21wIe+jPlom7TN1leWTNbqAXfrrYvQJGEF9JweKw5WWRBhvXtgXiT2ckvBijuVAdA=
+  - secure: DAcE4hAgVJPQOU+qvU77S6rseu+9Mc9sKamPZRUEVNFY+xU/B5ZuVivRJd0VtGHzgRqsZXRMXih96Nau5TSSxV28C/Sd8bnu0VzA1UnV07uKhwOyb7vRi+KbdNN0ICFPuqw7RFgoqytV4BpKRer+ZQDohpN7XdiBumrrrBREZyk=
+  - secure: OgtWjiebuZowAhHEthCbFocW/4LnapqqXNlZr9+KI93IgpHoubiimO0WSNL3S2//CO47qyuENNYOmUQWlXcQ1qIlhB/fzZ911CDU0oT2f1CSFihoUemRXRXYbuXHD52kT7eQttqHYCVmPWeH++B5r7kzYa2kNgP9fCJ3Vk29nCc=
+  - secure: h3rVFMIzYoTE9Y/WEhVUKV1LU7Oq5m0MI/2ufTTR+yFrX9qIX08QbE6ZnDvCihOVDCDT0rx6AcnaB+u1ay2gTsedmHw44GJbI37xiLFx+C9F6edXtTjlUkF/WG/06N/NYmb1lsxb2sgmMXl8vOcT1CpBnvxr07eDpzGG534fdXQ=
 before_script:
-  - composer install
-  - wget https://raw.githubusercontent.com/wp-cli/sample-plugin/master/bin/install-wp-tests.sh
-  - bash install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION 
-
+- composer install
+- wget https://raw.githubusercontent.com/wp-cli/sample-plugin/master/bin/install-wp-tests.sh
+- bash install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
 after_script:
-  - php vendor/bin/coveralls
+- php vendor/bin/coveralls

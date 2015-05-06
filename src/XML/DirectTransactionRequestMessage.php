@@ -1,33 +1,34 @@
 <?php
 
 /**
- * Title: MultiSafepay Connect XML redirect transaction request message
+ * Title: MultiSafepay Connect XML direct transaction request message
  * Description:
  * Copyright: Copyright (c) 2005 - 2015
  * Company: Pronamic
  * @author Remco Tolsma
- * @version 1.0.0
- * @since 1.0.0
+ * @version 1.2.0
+ * @since 1.2.0
  */
-class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage extends Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RequestMessage {
+class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRequestMessage extends Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RequestMessage {
 	/**
 	 * The document element name
 	 *
 	 * @var string
 	 */
-	const NAME = 'redirecttransaction';
+	const NAME = 'directtransaction';
 
 	//////////////////////////////////////////////////
 
 	/**
 	 * Constructs and initialize an directory response message
 	 */
-	public function __construct( $merchant, $customer, $transaction ) {
+	public function __construct( $merchant, $customer, $transaction, $gateway_info = null ) {
 		parent::__construct( self::NAME );
 
-		$this->merchant    = $merchant;
-		$this->customer    = $customer;
-		$this->transaction = $transaction;
+		$this->merchant     = $merchant;
+		$this->customer     = $customer;
+		$this->transaction  = $transaction;
+		$this->gateway_info = $gateway_info;
 	}
 
 	//////////////////////////////////////////////////
@@ -46,8 +47,8 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionReque
 		// Merchant
 		$merchant = $this->merchant;
 
-		$element = Pronamic_XML_Util::add_element( $document, $document->documentElement, 'merchant' );
-		Pronamic_XML_Util::add_elements( $document, $element, array(
+		$element = Pronamic_WP_Pay_XML_Util::add_element( $document, $document->documentElement, 'merchant' );
+		Pronamic_WP_Pay_XML_Util::add_elements( $document, $element, array(
 			'account'          => $merchant->account,
 			'site_id'          => $merchant->site_id,
 			'site_secure_code' => $merchant->site_secure_code,
@@ -60,8 +61,8 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionReque
 		// Customer
 		$customer = $this->customer;
 
-		$element = Pronamic_XML_Util::add_element( $document, $document->documentElement, 'customer' );
-		Pronamic_XML_Util::add_elements( $document, $element, array(
+		$element = Pronamic_WP_Pay_XML_Util::add_element( $document, $document->documentElement, 'customer' );
+		Pronamic_WP_Pay_XML_Util::add_elements( $document, $element, array(
 			'locale'      => $customer->locale,
 			'ipaddress'   => $customer->ip_address,
 			'forwardedip' => $customer->forwarded_ip,
@@ -80,11 +81,11 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionReque
 		// Transaction
 		$transaction = $this->transaction;
 
-		$element = Pronamic_XML_Util::add_element( $document, $document->documentElement, 'transaction' );
-		Pronamic_XML_Util::add_elements( $document, $element, array(
+		$element = Pronamic_WP_Pay_XML_Util::add_element( $document, $document->documentElement, 'transaction' );
+		Pronamic_WP_Pay_XML_Util::add_elements( $document, $element, array(
 			'id'          => $transaction->id,
 			'currency'    => $transaction->currency,
-			'amount'      => Pronamic_WP_Util::amount_to_cents( $transaction->amount ),
+			'amount'      => Pronamic_WP_Pay_Util::amount_to_cents( $transaction->amount ),
 			'description' => $transaction->description,
 			'var1'        => $transaction->var1,
 			'var2'        => $transaction->var2,
@@ -95,8 +96,18 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionReque
 			'daysactive'  => $transaction->days_active,
 		) );
 
+		// Gateway info
+		if ( $this->gateway_info ) {
+			$gateway_info = $this->gateway_info;
+
+			$element = Pronamic_WP_Pay_XML_Util::add_element( $document, $document->documentElement, 'gatewayinfo' );
+			Pronamic_WP_Pay_XML_Util::add_elements( $document, $element, array(
+				'issuerid' => $gateway_info->issuer_id,
+			) );
+		}
+
 		// Signature
-		$element = Pronamic_XML_Util::add_element( $document, $document->documentElement, 'signature', $this->signature );
+		$element = Pronamic_WP_Pay_XML_Util::add_element( $document, $document->documentElement, 'signature', $this->signature );
 
 		// Return
 		return $document;

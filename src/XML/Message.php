@@ -3,10 +3,11 @@
 /**
  * Title: MultiSafepay Connect XML message
  * Description:
- * Copyright: Copyright (c) 2005 - 2011
+ * Copyright: Copyright (c) 2005 - 2015
  * Company: Pronamic
  * @author Remco Tolsma
- * @version 1.0
+ * @version 1.0.0
+ * @since 1.0.0
  */
 class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_Message {
 	/**
@@ -48,6 +49,12 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_Message {
 	 */
 	public function __construct( $name ) {
 		$this->name = $name;
+
+		// User Agent
+		// @since 1.2.0
+		global $pronamic_pay_version;
+
+		$this->set_user_agent( 'Pronamic Pay' . ' ' . $pronamic_pay_version );
 	}
 
 	//////////////////////////////////////////////////
