@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.1
+*	Fix fatal error due to undefined var $result.
+
 ## 1.2.0
 *	Added support for direct transaction request for iDEAL.
 
