@@ -1,9 +1,10 @@
 <?php
 
 /**
+ * Test signature
+ *
  * @see http://pronamic.nl/wp-content/uploads/2013/04/BPE-3.0-Gateway-HTML.1.02.pdf
  * @author remco
- *
  */
 class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestSignature extends WP_UnitTestCase {
 	function test_signature() {

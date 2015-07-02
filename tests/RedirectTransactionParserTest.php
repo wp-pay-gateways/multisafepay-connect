@@ -1,6 +1,9 @@
 <?php
 
 class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestRedirectTransactionParser extends WP_UnitTestCase {
+	/**
+	 * Test init
+	 */
 	function test_init() {
 		$filename = __DIR__ . '/Mock/redirect-transaction-response.xml';
 
@@ -12,6 +15,8 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestRedirectTransactionParser e
 	}
 
 	/**
+	 * Test parser
+	 *
 	 * @depends test_init
 	 */
 	function test_parser( $simplexml ) {
@@ -23,6 +28,8 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestRedirectTransactionParser e
 	}
 
 	/**
+	 * Test values
+	 *
 	 * @depends test_parser
 	 */
 	function test_values( $message ) {
