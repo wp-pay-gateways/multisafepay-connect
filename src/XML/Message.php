@@ -54,7 +54,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_Message {
 		// @since 1.2.0
 		global $pronamic_pay_version;
 
-		$this->set_user_agent( 'Pronamic Pay' . ' ' . $pronamic_pay_version );
+		$this->set_user_agent( 'Pronamic Pay ' . $pronamic_pay_version );
 	}
 
 	//////////////////////////////////////////////////
@@ -62,7 +62,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_Message {
 	/**
 	 * Get the name of this message
 	 *
-	 * return string
+	 * @return string
 	 */
 	public function get_name() {
 		return $this->name;
