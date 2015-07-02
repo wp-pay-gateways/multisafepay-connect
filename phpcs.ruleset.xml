@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 
-<ruleset name="WordPress Pay MultiSafepay rules">
+<ruleset name="WordPress Pay MultiSafepay Connect rules">
 	<rule ref="WordPress">
+		<exclude name="Generic.Classes.DuplicateClassName.Found" />
 		<exclude name="Generic.Files.LowercasedFilename.NotFound" />
 
 		<exclude name="Squiz.Commenting" />
