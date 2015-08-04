@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.2.2] - 2015-08-04
+- Make sure to use the wp-pay/core functions.
+
 ## [1.2.1] - 2015-05-08
 - Fix fatal error due to undefined var $result.
 
