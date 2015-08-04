@@ -11,17 +11,6 @@
  */
 abstract class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RequestMessage extends Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_Message  {
 	/**
-	 * Constructs and initialize an request message
-	 *
-	 * @param string $name
-	 */
-	public function __construct( $name ) {
-		parent::__construct( $name );
-	}
-
-	//////////////////////////////////////////////////
-
-	/**
 	 * Get the DOM document
 	 *
 	 * @return DOMDocument

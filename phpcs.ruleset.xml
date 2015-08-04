@@ -1,8 +1,13 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Pay MultiSafepay rules">
-	<rule ref="WordPress">
-		<exclude name="WordPress.VIP.RestrictedFunctions.wp_remote_get" />
 
+<ruleset name="WordPress Pay MultiSafepay Connect rules">
+	<rule ref="WordPress">
+		<exclude name="Generic.Classes.DuplicateClassName.Found" />
+		<exclude name="Generic.Files.LowercasedFilename.NotFound" />
+
+		<exclude name="Squiz.Commenting" />
+
+		<exclude name="WordPress.VIP.RestrictedFunctions.wp_remote_get" />
 		<exclude name="WordPress.VIP.RestrictedVariables.cache_constraints" />
 	</rule>
 

@@ -11,28 +11,28 @@
  */
 class Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways {
 	/**
-	 * iDEAL
+	 * Gateway iDEAL
 	 *
 	 * @var string
 	 */
 	const IDEAL = 'IDEAL';
 
 	/**
-	 * Visa via Multipay
+	 * Gateway Visa via Multipay
 	 *
 	 * @var string
 	 */
 	const MASTERCARD = 'MASTERCARD';
 
 	/**
-	 * Bank Transfer
+	 * Gateway Bank Transfer
 	 *
 	 * @var string
 	 */
 	const BANK_TRANSFER = 'BANKTRANS';
 
 	/**
-	 * Visa CreditCards
+	 * Gateway Visa CreditCards
 	 *
 	 * @var string
 	 */
