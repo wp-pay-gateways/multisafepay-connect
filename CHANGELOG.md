@@ -1,19 +1,32 @@
-# Changelog
+# Change Log
 
-## 1.2.1
-*	Fix fatal error due to undefined var $result.
+All notable changes to this project will be documented in this file.
 
-## 1.2.0
-*	Added support for direct transaction request for iDEAL.
+This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a CHANGELOG](http://keepachangelog.com/).
 
-## 1.1.1
-*	Updated WordPress pay core library to version 1.1.1.
-*	If payment description is empty the payment ID is used.
+## [Unreleased][unreleased]
+-
 
-## 1.1.0
-*	Updated WordPress pay core library to version 1.1.0.
-*	Updated WordPress pay MultiSafepay library to version 1.1.0.
-*	Fixed isues with filter_input INPUT_SERVER (https://bugs.php.net/bug.php?id=49184).
+## [1.2.1] - 2015-05-08
+- Fix fatal error due to undefined var $result.
 
-## 1.0.0
-*	First release.
+## [1.2.0] - 2015-05-06
+- Added support for direct transaction request for iDEAL.
+
+## [1.1.1] - 2015-03-26
+- Updated WordPress pay core library to version 1.1.1.
+- If payment description is empty the payment ID is used.
+
+## [1.1.0] - 2015-02-27
+- Updated WordPress pay core library to version 1.1.0.
+- Updated WordPress pay MultiSafepay library to version 1.1.0.
+- Fixed isues with filter_input INPUT_SERVER (https://bugs.php.net/bug.php?id=49184).
+
+## 1.0.0 - 2015-01-19
+- First release.
+
+[unreleased]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.1...HEAD
+[1.2.1]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.0...1.2.1
+[1.2.0]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.1.1...1.2.0
+[1.1.1]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.1.0...1.1.1
+[1.1.0]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.0.0...1.1.0
