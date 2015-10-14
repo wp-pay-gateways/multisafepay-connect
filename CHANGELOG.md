@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.2.3] - 2015-10-14
+- Add support for bank transfer as payment method.
+
 ## [1.2.2] - 2015-08-04
 - Make sure to use the wp-pay/core functions.
 
@@ -28,7 +31,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.1...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.3...HEAD
+[1.2.3]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.2...1.2.3
+[1.2.2]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.1...1.2.2
 [1.2.1]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.1.0...1.1.1
