@@ -115,15 +115,26 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$transaction->amount = $data->get_amount();
 		$transaction->description = $transaction_description;
 
-		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL === $payment_method ) {
-			$gateway_info = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_GatewayInfo();
-			$gateway_info->issuer_id = $data->get_issuer_id();
+		switch ( $payment_method ) {
+			case Pronamic_WP_Pay_PaymentMethods::IDEAL:
+				$gateway_info = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_GatewayInfo();
+				$gateway_info->issuer_id = $data->get_issuer_id();
 
-			$transaction->gateway = Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::IDEAL;
+				$transaction->gateway = Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::IDEAL;
 
-			$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRequestMessage( $merchant, $customer, $transaction, $gateway_info );
-		} else {
-			$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage( $merchant, $customer, $transaction );
+				$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_DirectTransactionRequestMessage( $merchant, $customer, $transaction, $gateway_info );
+
+				break;
+
+			case Pronamic_WP_Pay_PaymentMethods::BANK_TRANSFER:
+				$transaction->gateway = Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::BANK_TRANSFER;
+
+				$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage( $merchant, $customer, $transaction );
+
+				break;
+
+			default:
+				$message = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RedirectTransactionRequestMessage( $merchant, $customer, $transaction );
 		}
 
 		$signature = Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Signature::generate( $transaction->amount, $transaction->currency, $merchant->account, $merchant->site_id, $transaction->id );
