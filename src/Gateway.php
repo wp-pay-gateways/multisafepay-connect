@@ -85,8 +85,6 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 	/////////////////////////////////////////////////
 
 	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment, $payment_method = null ) {
-		$url = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
-
 		$transaction_description = $data->get_description();
 
 		if ( empty( $transaction_description ) ) {
@@ -97,9 +95,9 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$merchant->account = $this->config->account_id;
 		$merchant->site_id = $this->config->site_id;
 		$merchant->site_secure_code = $this->config->site_code;
-		$merchant->notification_url = $url;
-		$merchant->redirect_url = $url;
-		$merchant->cancel_url = $url;
+		$merchant->notification_url = $payment->get_return_url();
+		$merchant->redirect_url = $payment->get_return_url();
+		$merchant->cancel_url = $payment->get_return_url();
 		$merchant->close_window = 'false';
 
 		$customer = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Customer();
