@@ -1,8 +1,11 @@
 <?php
 
-class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_GatewayIntegration {
+class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Integration {
 	public function __construct() {
-		$this->id = 'multisafepay-connect';
+		$this->id       = 'multisafepay-connect';
+		$this->name     = 'MultiSafepay - Connect';
+		$this->url      = 'http://www.multisafepay.com/';
+		$this->provider = 'multisafepay';
 	}
 
 	public function get_config_factory_class() {
