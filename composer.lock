@@ -70,16 +70,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-pay-gateways/multisafepay.git",
-                "reference": "f689bc54da0bdc75726fe01e17ea57a405cae8ef"
+                "reference": "129b5bf0c84ed34e2ec4806f663a00502babe918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-pay-gateways/multisafepay/zipball/f689bc54da0bdc75726fe01e17ea57a405cae8ef",
-                "reference": "f689bc54da0bdc75726fe01e17ea57a405cae8ef",
+                "url": "https://api.github.com/repos/wp-pay-gateways/multisafepay/zipball/129b5bf0c84ed34e2ec4806f663a00502babe918",
+                "reference": "129b5bf0c84ed34e2ec4806f663a00502babe918",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4",
+                "wp-pay-gateways/common": "dev-develop",
                 "wp-pay/core": "dev-develop"
             },
             "require-dev": {
@@ -120,7 +121,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2015-11-04 13:47:07"
+            "time": "2015-11-19 12:59:35"
         },
         {
             "name": "wp-pay/core",
