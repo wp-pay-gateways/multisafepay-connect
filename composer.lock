@@ -4,9 +4,66 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "65cea4c4f209fe0df816b14d669cd603",
-    "content-hash": "d4708c9904231117b31132e351e2f918",
+    "hash": "919ae3da658f9a2c34a40051cc500d7c",
+    "content-hash": "b96e480077ae6c469c2cb7f3e1d4fc87",
     "packages": [
+        {
+            "name": "wp-pay-gateways/common",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wp-pay-gateways/common.git",
+                "reference": "66a36014eaa96b657fd3ac3ade7f6c68c1b3c695"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wp-pay-gateways/common/zipball/66a36014eaa96b657fd3ac3ade7f6c68c1b3c695",
+                "reference": "66a36014eaa96b657fd3ac3ade7f6c68c1b3c695",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4",
+                "wp-pay/core": "dev-develop"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Remco Tolsma",
+                    "email": "info@remcotolsma.nl",
+                    "homepage": "http://www.remcotolsma.nl/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Pronamic",
+                    "email": "info@pronamic.eu",
+                    "homepage": "http://www.pronamic.eu/",
+                    "role": "Company"
+                }
+            ],
+            "description": "Common driver for the WordPress payment processing library.",
+            "homepage": "http://www.wp-pay.org/gateways/common/",
+            "keywords": [
+                "common",
+                "gateway",
+                "pay",
+                "pronamic",
+                "wordpress",
+                "wp"
+            ],
+            "time": "2015-11-19 07:11:15"
+        },
         {
             "name": "wp-pay-gateways/multisafepay",
             "version": "dev-develop",
@@ -71,12 +128,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-pay/core.git",
-                "reference": "a091c0061ba7f3e17be373686a37dbaff7f82edd"
+                "reference": "2359885cebc9329e46a6defac841117deda76fa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-pay/core/zipball/a091c0061ba7f3e17be373686a37dbaff7f82edd",
-                "reference": "a091c0061ba7f3e17be373686a37dbaff7f82edd",
+                "url": "https://api.github.com/repos/wp-pay/core/zipball/2359885cebc9329e46a6defac841117deda76fa6",
+                "reference": "2359885cebc9329e46a6defac841117deda76fa6",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +173,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2015-11-12 11:02:25"
+            "time": "2015-11-12 13:02:52"
         }
     ],
     "packages-dev": [
@@ -631,6 +688,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "wp-pay/core": 20,
+        "wp-pay-gateways/common": 20,
         "wp-pay-gateways/multisafepay": 20,
         "satooshi/php-coveralls": 20
     },
