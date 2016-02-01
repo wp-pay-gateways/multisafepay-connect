@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.2.4] - 2016-02-1
+- Added an gateway settings class.
+
 ## [1.2.3] - 2015-10-14
 - Add support for bank transfer as payment method.
 

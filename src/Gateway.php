@@ -3,8 +3,9 @@
 /**
  * Title: MultiSafepay Connect gateay
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.1.0
  * @since 1.0.1
@@ -73,7 +74,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 	 */
 	public function get_issuer_field() {
 		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL === $this->get_payment_method() ) {
-			return array (
+			return array(
 				'id'       => 'pronamic_ideal_issuer_id',
 				'name'     => 'pronamic_ideal_issuer_id',
 				'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
