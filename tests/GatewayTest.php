@@ -10,12 +10,12 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_GatewayTest extends WP_UnitTest
 	public function pre_http_request( $preempt, $request, $url ) {
 		$response = file_get_contents( __DIR__ . '/Mock/ideal-issuers-response.http' );
 
-		$processedResponse = WP_Http::processResponse( $response );
+		$processed_response = WP_Http::processResponse( $response );
 
-		$processedHeaders = WP_Http::processHeaders( $processedResponse['headers'], $url );
-		$processedHeaders['body'] = $processedResponse['body'];
+		$processed_headers = WP_Http::processHeaders( $processed_response['headers'], $url );
+		$processed_headers['body'] = $processed_response['body'];
 
-		return $processedHeaders;
+		return $processed_headers;
 	}
 
 	function test_init() {

@@ -3,8 +3,9 @@
 /**
  * Title: MultiSafepay Connect gateay
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.1.0
  * @since 1.0.1
@@ -72,21 +73,48 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 	 * @since 1.2.0
 	 */
 	public function get_issuer_field() {
+		if ( Pronamic_WP_Pay_PaymentMethods::IDEAL === $this->get_payment_method() ) {
+			return array(
+				'id'       => 'pronamic_ideal_issuer_id',
+				'name'     => 'pronamic_ideal_issuer_id',
+				'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
+				'required' => true,
+				'type'     => 'select',
+				'choices'  => $this->get_transient_issuers(),
+			);
+		}
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
+	 * Get payment methods
+	 *
+	 * @return mixed an array or null
+	 */
+	public function get_payment_methods() {
+		$payment_methods = new ReflectionClass( 'Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways' );
+
+		return array( array( 'options' => $payment_methods->getConstants() ) );
+	}
+
+	/////////////////////////////////////////////////
+
+	/**
+	 * Get supported payment methods
+	 *
+	 * @see Pronamic_WP_Pay_Gateway::get_supported_payment_methods()
+	 */
+	public function get_supported_payment_methods() {
 		return array(
-			'id'       => 'pronamic_ideal_issuer_id',
-			'name'     => 'pronamic_ideal_issuer_id',
-			'label'    => __( 'Choose your bank', 'pronamic_ideal' ),
-			'required' => true,
-			'type'     => 'select',
-			'choices'  => $this->get_transient_issuers(),
+			Pronamic_WP_Pay_PaymentMethods::IDEAL         => Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::IDEAL,
+			Pronamic_WP_Pay_PaymentMethods::BANK_TRANSFER => Pronamic_WP_Pay_Gateways_MultiSafepay_Gateways::BANK_TRANSFER,
 		);
 	}
 
 	/////////////////////////////////////////////////
 
 	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment, $payment_method = null ) {
-		$url = add_query_arg( 'payment', $payment->get_id(), home_url( '/' ) );
-
 		$transaction_description = $data->get_description();
 
 		if ( empty( $transaction_description ) ) {
@@ -97,9 +125,9 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$merchant->account = $this->config->account_id;
 		$merchant->site_id = $this->config->site_id;
 		$merchant->site_secure_code = $this->config->site_code;
-		$merchant->notification_url = $url;
-		$merchant->redirect_url = $url;
-		$merchant->cancel_url = $url;
+		$merchant->notification_url = $payment->get_return_url();
+		$merchant->redirect_url = $payment->get_return_url();
+		$merchant->cancel_url = $payment->get_return_url();
 		$merchant->close_window = 'false';
 
 		$customer = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Customer();

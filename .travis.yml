@@ -2,6 +2,9 @@ sudo: false
 
 language: php
 
+matrix:
+  fast_finish: true
+
 php:
   - 5.3
   - 5.4
@@ -22,9 +25,10 @@ env:
   - secure: h3rVFMIzYoTE9Y/WEhVUKV1LU7Oq5m0MI/2ufTTR+yFrX9qIX08QbE6ZnDvCihOVDCDT0rx6AcnaB+u1ay2gTsedmHw44GJbI37xiLFx+C9F6edXtTjlUkF/WG/06N/NYmb1lsxb2sgmMXl8vOcT1CpBnvxr07eDpzGG534fdXQ=
 
 before_script:
-- composer install
-- wget https://raw.githubusercontent.com/wp-cli/sample-plugin/master/bin/install-wp-tests.sh
-- bash install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - composer self-update
+  - composer install
+  - wget https://raw.githubusercontent.com/wp-cli/sample-plugin/master/bin/install-wp-tests.sh
+  - bash install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
 
 after_script:
-- php vendor/bin/coveralls
+  - php vendor/bin/coveralls
