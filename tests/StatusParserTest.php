@@ -2,7 +2,7 @@
 
 class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestStatusParser extends WP_UnitTestCase {
 	function test_init() {
-		$filename = __DIR__ . '/Mock/status-response.xml';
+		$filename = dirname( __FILE__ ) . '/Mock/status-response.xml';
 
 		$simplexml = simplexml_load_file( $filename );
 

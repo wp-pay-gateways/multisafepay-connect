@@ -2,7 +2,7 @@
 
 class Pronamic_Pay_Gateways_MultiSafepay_Connect_DirectTransactionParserTest extends WP_UnitTestCase {
 	function test_init() {
-		$filename = __DIR__ . '/Mock/direct-transaction-response.xml';
+		$filename = dirname( __FILE__ ) . '/Mock/direct-transaction-response.xml';
 
 		$simplexml = simplexml_load_file( $filename );
 

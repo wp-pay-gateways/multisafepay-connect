@@ -5,7 +5,7 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_IDealIssuersParserTest extends 
 	 * Test init
 	 */
 	function test_init() {
-		$filename = __DIR__ . '/Mock/ideal-issuers-response.xml';
+		$filename = dirname( __FILE__ ) . '/Mock/ideal-issuers-response.xml';
 
 		$simplexml = simplexml_load_file( $filename );
 
