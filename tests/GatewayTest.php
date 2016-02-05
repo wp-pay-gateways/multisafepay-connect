@@ -8,7 +8,7 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_GatewayTest extends WP_UnitTest
 	 * @return string
 	 */
 	public function pre_http_request( $preempt, $request, $url ) {
-		$response = file_get_contents( __DIR__ . '/Mock/ideal-issuers-response.http' );
+		$response = file_get_contents( dirname( __FILE__ ) . '/Mock/ideal-issuers-response.http' );
 
 		$processed_response = WP_Http::processResponse( $response );
 

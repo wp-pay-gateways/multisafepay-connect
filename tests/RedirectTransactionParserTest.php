@@ -5,7 +5,7 @@ class Pronamic_Pay_Gateways_MultiSafepay_Connect_TestRedirectTransactionParser e
 	 * Test init
 	 */
 	function test_init() {
-		$filename = __DIR__ . '/Mock/redirect-transaction-response.xml';
+		$filename = dirname( __FILE__ ) . '/Mock/redirect-transaction-response.xml';
 
 		$simplexml = simplexml_load_file( $filename );
 
