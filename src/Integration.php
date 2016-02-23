@@ -8,7 +8,11 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Integration extends Pronamic
 		$this->provider = 'multisafepay';
 	}
 
-	public function get_gateway_class() {
-		return 'Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway';
+	public function get_config_factory_class() {
+		return 'Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_ConfigFactory';
+	}
+
+	public function get_config_class() {
+		return 'Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Config';
 	}
 }
