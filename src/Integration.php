@@ -11,8 +11,4 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Integration extends Pronamic
 	public function get_config_factory_class() {
 		return 'Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_ConfigFactory';
 	}
-
-	public function get_config_class() {
-		return 'Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Config';
-	}
 }
