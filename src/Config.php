@@ -7,7 +7,8 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.0.0
+ * @version 1.2.6
+ * @since 1.2.6
  */
 class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Config extends Pronamic_WP_Pay_Gateways_MultiSafepay_Config {
 	public $account_id;
