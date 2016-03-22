@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.2.6
+ * @version 1.2.7
  * @since 1.2.6
  */
 class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_ConfigFactory extends Pronamic_WP_Pay_GatewayConfigFactory {
