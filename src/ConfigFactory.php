@@ -7,12 +7,12 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.2.6
+ * @version 1.2.7
  * @since 1.2.6
  */
 class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_ConfigFactory extends Pronamic_WP_Pay_GatewayConfigFactory {
 	public function get_config( $post_id ) {
-		$config = new Pronamic_WP_Pay_Gateways_MultiSafepay_Config();
+		$config = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Config();
 
 		$config->mode       = get_post_meta( $post_id, '_pronamic_gateway_mode', true );
 		$config->account_id = get_post_meta( $post_id, '_pronamic_gateway_multisafepay_account_id', true );
