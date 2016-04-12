@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.1.0
+ * @version 1.2.8
  * @since 1.0.1
  */
 class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_Pay_Gateway {
@@ -114,6 +114,13 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 
 	/////////////////////////////////////////////////
 
+	/**
+	 * Start payment.
+	 *
+	 * @param Pronamic_Pay_PaymentDataInterface $data payment data object
+	 * @param Pronamic_Pay_Payment $payment payment object
+	 * @param int $payment_method payment method indicator
+	 */
 	public function start( Pronamic_Pay_PaymentDataInterface $data, Pronamic_Pay_Payment $payment, $payment_method = null ) {
 		$transaction_description = $data->get_description();
 
@@ -134,7 +141,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		$customer->locale = $data->get_language_and_country();
 		$customer->ip_address = Pronamic_WP_Pay_Server::get( 'REMOTE_ADDR', FILTER_VALIDATE_IP );
 		$customer->forwarded_ip = Pronamic_WP_Pay_Server::get( 'HTTP_X_FORWARDED_FOR', FILTER_VALIDATE_IP );
-		$customer->first_name = $data->getCustomerName();
+		$customer->first_name = $data->get_customer_name();
 		$customer->email = $data->get_email();
 
 		$transaction = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Transaction();
