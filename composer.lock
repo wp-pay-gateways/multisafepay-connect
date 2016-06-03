@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "581b74d73f05c510ce8aa7f9f5c8dac3",
-    "content-hash": "c26e916751d24e8ea31643f344694f9e",
+    "hash": "f66d5289898a01fcaa0d6690dac87d40",
+    "content-hash": "695db7d757032be17835f0fa8cac71c3",
     "packages": [
         {
             "name": "wp-pay-gateways/common",
@@ -135,16 +135,16 @@
         },
         {
             "name": "wp-pay/core",
-            "version": "1.3.6",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-pay/core.git",
-                "reference": "99c95cf8ed4de00eaf067b66ea7b6c5cc54abb19"
+                "reference": "ba6be549d7ee916f65ef27ce957cba2ffdd8c014"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-pay/core/zipball/99c95cf8ed4de00eaf067b66ea7b6c5cc54abb19",
-                "reference": "99c95cf8ed4de00eaf067b66ea7b6c5cc54abb19",
+                "url": "https://api.github.com/repos/wp-pay/core/zipball/ba6be549d7ee916f65ef27ce957cba2ffdd8c014",
+                "reference": "ba6be549d7ee916f65ef27ce957cba2ffdd8c014",
                 "shasum": ""
             },
             "require": {
@@ -191,7 +191,7 @@
                 "wordpress",
                 "wp"
             ],
-            "time": "2016-04-29 11:49:09"
+            "time": "2016-05-26 15:00:20"
         },
         {
             "name": "xrstf/composer-php52",
@@ -1481,9 +1481,18 @@
             "time": "2016-02-01 16:14:59"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "1.4.0",
+            "alias_normalized": "1.4.0.0",
+            "version": "dev-develop",
+            "package": "wp-pay/core"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "wp-pay/core": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
