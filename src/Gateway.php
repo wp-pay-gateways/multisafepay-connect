@@ -127,25 +127,25 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Gateway extends Pronamic_WP_
 		}
 
 		$merchant = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Merchant();
-		$merchant->account = $this->config->account_id;
-		$merchant->site_id = $this->config->site_id;
+		$merchant->account          = $this->config->account_id;
+		$merchant->site_id          = $this->config->site_id;
 		$merchant->site_secure_code = $this->config->site_code;
 		$merchant->notification_url = $payment->get_return_url();
-		$merchant->redirect_url = $payment->get_return_url();
-		$merchant->cancel_url = $payment->get_return_url();
-		$merchant->close_window = 'false';
+		$merchant->redirect_url     = $payment->get_return_url();
+		$merchant->cancel_url       = $payment->get_return_url();
+		$merchant->close_window     = 'false';
 
 		$customer = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Customer();
-		$customer->locale = $payment->get_locale();
-		$customer->ip_address = Pronamic_WP_Pay_Server::get( 'REMOTE_ADDR', FILTER_VALIDATE_IP );
+		$customer->locale       = $payment->get_locale();
+		$customer->ip_address   = Pronamic_WP_Pay_Server::get( 'REMOTE_ADDR', FILTER_VALIDATE_IP );
 		$customer->forwarded_ip = Pronamic_WP_Pay_Server::get( 'HTTP_X_FORWARDED_FOR', FILTER_VALIDATE_IP );
 		//$customer->first_name = $data->get_customer_name();
-		$customer->email = $payment->get_email();
+		$customer->email        = $payment->get_email();
 
 		$transaction = new Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Transaction();
-		$transaction->id = uniqid();
-		$transaction->currency = $payment->get_currency();
-		$transaction->amount = $payment->get_amount();
+		$transaction->id          = uniqid();
+		$transaction->currency    = $payment->get_currency();
+		$transaction->amount      = $payment->get_amount();
 		$transaction->description = $transaction_description;
 
 		switch ( $payment->get_method() ) {
