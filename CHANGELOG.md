@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.2.9] - 2016-06-08
+- Simplified the gateay payment start function.
+
 ## [1.2.8] - 2016-04-12
 - No longer use camelCase for payment data.
 
@@ -48,7 +51,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.8...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.9...HEAD
+[1.2.9]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.8...1.2.9
 [1.2.8]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.7...1.2.8
 [1.2.7]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.6...1.2.7
 [1.2.6]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.5...1.2.6
