@@ -77,13 +77,20 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 
 		if ( is_wp_error( $result ) ) {
 			$this->error = $result;
-		} else {
-			$xml = Pronamic_WP_Pay_Util::simplexml_load_string( $result );
 
-			if ( is_wp_error( $xml ) ) {
-				$this->error = $xml;
-			} else {
-				$return = $this->parse_xml( $xml );
+			return false;
+		}
+
+		$xml = Pronamic_WP_Pay_Util::simplexml_load_string( $result );
+
+		if ( is_wp_error( $xml ) ) {
+			$this->error = $xml;
+		} else {
+			$return = $this->parse_xml( $xml );
+
+			if ( 'error' === $return->result ) {
+				$this->error = new WP_Error( 'multisafepay_error', $xml->error->description, $xml->error );
+				$return      = false;
 			}
 		}
 
