@@ -8,7 +8,7 @@
 [![Total Downloads](https://poser.pugx.org/wp-pay-gateways/multisafepay-connect/downloads)](https://packagist.org/packages/wp-pay-gateways/multisafepay-connect)
 [![Latest Unstable Version](https://poser.pugx.org/wp-pay-gateways/multisafepay-connect/v/unstable)](https://packagist.org/packages/wp-pay-gateways/multisafepay-connect)
 [![License](https://poser.pugx.org/wp-pay-gateways/multisafepay-connect/license)](https://packagist.org/packages/wp-pay-gateways/multisafepay-connect)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
 ## Documentation
 
