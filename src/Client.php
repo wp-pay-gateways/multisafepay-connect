@@ -88,7 +88,7 @@ class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_Client {
 		} else {
 			$return = $this->parse_xml( $xml );
 
-			if ( 'error' === $return->result ) {
+			if ( is_object( $return ) && isset( $return->result ) && 'error' === $return->result ) {
 				$this->error = new WP_Error( 'multisafepay_error', $xml->error->description, $xml->error );
 				$return      = false;
 			}
