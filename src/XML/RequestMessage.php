@@ -10,7 +10,7 @@
  * @version 1.0.0
  * @since 1.0.0
  */
-abstract class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RequestMessage extends Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_Message  {
+abstract class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_RequestMessage extends Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_XML_Message {
 	/**
 	 * Get the DOM document
 	 *

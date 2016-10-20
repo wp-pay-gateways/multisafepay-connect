@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.3.0] - 2016-10-20
+- Improved error reporting.
+
 ## [1.2.9] - 2016-06-08
 - Simplified the gateay payment start function.
 
@@ -51,7 +54,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-01-19
 - First release.
 
-[unreleased]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.9...HEAD
+[unreleased]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.3.0...HEAD
+[1.3.0]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.9...1.3.0
 [1.2.9]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.8...1.2.9
 [1.2.8]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.7...1.2.8
 [1.2.7]: https://github.com/wp-pay-gateways/multisafepay-connect/compare/1.2.6...1.2.7

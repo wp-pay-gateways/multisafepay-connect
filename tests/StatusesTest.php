@@ -10,7 +10,7 @@
  * @version 1.2.0
  * @since 1.2.0
  */
-class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_StatusesTest extends PHPUnit_Framework_TestCase {
+class Pronamic_WP_Pay_Gateways_MultiSafepay_Connect_StatusesTest extends WP_UnitTestCase {
 	/**
 	 * Test transform
 	 *
