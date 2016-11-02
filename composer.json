@@ -1,7 +1,7 @@
 {
 	"name": "wp-pay-gateways/multisafepay-connect",
-	"description": "MultiSafepay Connect driver for the WordPress payment processing library.",
-	"keywords": ["wordpress", "wp", "pay", "multisafepay", "connect", "ideal", "gateway", "pronamic"],
+	"description": "[DEPRECATED] MultiSafepay Connect driver for the WordPress payment processing library.",
+	"keywords": ["wordpress", "wp", "pay", "multisafepay", "connect", "ideal", "gateway", "pronamic", "deprecated"],
 	"homepage": "http://www.wp-pay.org/gateways/multisafepay-connect/",
 	"license": "GPL",
 	"authors": [

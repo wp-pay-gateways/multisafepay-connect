@@ -1,4 +1,4 @@
-# WordPress Pay Gateway: MultiSafepay Connect
+# [DEPRECATED] WordPress Pay Gateway: MultiSafepay Connect
 
 **MultiSafepay Connect driver for the WordPress payment processing library.**
 
